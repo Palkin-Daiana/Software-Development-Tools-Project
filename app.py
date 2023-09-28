@@ -16,7 +16,7 @@ st.sidebar.write('''Enter Your Preferences
 color =st.sidebar.selectbox('Choose Your Color', df.paint_color.unique(), index=1)
 condition = st.sidebar.radio("In What Condition?",df.condition.unique())
 price_def = (int(df.price.describe()['25%']), int(df.price.describe()['75%']))
-year = st.sidebar.slider('Choose Your Budget', df.price.min(), df.price.max(), (price_def))
+year = st.sidebar.slider('Choose Your Budget', int(df.price.min()), int(df.price.max()), (price_def))
 Antique = st.sidebar.checkbox('Antique cars only')
 
 
@@ -37,9 +37,3 @@ with st.expander(':rainbow[Some Additional Info for Car Experts Like You] :wink:
     st.plotly_chart(fig1)
     st.plotly_chart(fig2)
     st.plotly_chart(fig3)
-
-
-
-
-
-
