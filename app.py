@@ -11,8 +11,8 @@ st.header(':red[Find Your dream Car Today]')    # :color[] introduced 1.16.0, di
 st.image('https://www.automoblog.net/wp-content/uploads/2023/07/kids-dream-cars-ai-automoblog.net-1-10-1024x1024.png')
 
 
-st.sidebar.write('''Enter Your Preferences Below-  
-                 You will see the table changes to according to your preferences''')
+st.sidebar.write('''**Enter Your Preferences Below-**  
+                 You will see the table changes according to your preferences''')
 color =st.sidebar.selectbox('Choose Your Color', df.paint_color.unique(), index=1)
 condition = st.sidebar.radio("In What Condition?",df.condition.unique())
 price_def = (int(df.price.describe()['25%']), int(df.price.describe()['75%']))
