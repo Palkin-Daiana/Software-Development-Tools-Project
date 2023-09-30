@@ -24,7 +24,9 @@ if Antique:
     df_ant = df[df['model_year'] <= 1994]
     st.dataframe(df_ant[(df_ant['paint_color'] == color) & (df_ant['condition'] == condition)])
 else:
-    st.dataframe(df.style.format(subset=['model_year'], formatter="{:.2f}")[(df['paint_color'] == color) & (df['condition'] == condition)])
+    st.dataframe(df[(df['paint_color'] == color) & (df['condition'] == condition)])
+
+    ##.style.format(subset=['model_year'], formatter="{:.2f}")
 
 
 fig1 = px.scatter(df, x='model_year', y='price', color='condition', title='Price by Model Year and Car Condition')
