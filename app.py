@@ -16,7 +16,7 @@ st.sidebar.write('''Enter Your Preferences
 color =st.sidebar.selectbox('Choose Your Color', df.paint_color.unique(), index=1)
 condition = st.sidebar.radio("In What Condition?",df.condition.unique())
 price_def = (int(df.price.describe()['25%']), int(df.price.describe()['75%']))
-year = st.sidebar.slider('Choose Your Budget', int(df.price.min()), int(df.price.max()))
+year = st.sidebar.slider('Choose Your Budget', int(df.price.min()), int(df.price.max()), (int(df.price.min()), int(df.price.max())))
 Antique = st.sidebar.checkbox('Antique cars only')
 
 column_names = {'price':'Price', 'model_year':'Model Year', 'model':'Model', 'condition':'Condition', 'cylinders':'Cylinders', 'fuel':'Fuel',
