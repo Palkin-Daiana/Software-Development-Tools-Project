@@ -16,7 +16,7 @@ st.sidebar.write('''Enter Your Preferences
 color =st.sidebar.selectbox('Choose Your Color', df.paint_color.unique(), index=1)
 condition = st.sidebar.radio("In What Condition?",df.condition.unique())
 price_def = (int(df.price.describe()['25%']), int(df.price.describe()['75%']))
-year = st.sidebar.slider('Choose Your Budget', int(df.price.min()), int(df.price.max()), (price_def))
+year = st.sidebar.slider('Choose Your Budget', int(df.price.min()), int(df.price.max()))
 Antique = st.sidebar.checkbox('Antique cars only')
 
 column_names = {'price':'Price', 'model_year':'Model Year', 'model':'Model', 'condition':'Condition', 'cylinders':'Cylinders', 'fuel':'Fuel',
@@ -37,7 +37,7 @@ fig3_labels = df['fuel'].value_counts().index
 fig3_values = df['fuel'].value_counts().values
 fig3 = px.pie(data_frame=df, names=fig3_labels, values=fig3_values, title='A lot of GAZ fueled cars! We don\'t forget the DIESEL lovers', color_discrete_sequence=px.colors.sequential.Rainbow)
 
-with st.expander('Some Additional Info for Car Experts Like You'): 
+with st.expander(':red[Some Additional Info to Make Your Decision Easier]'): 
     st.plotly_chart(fig1)
     st.plotly_chart(fig2)
     st.plotly_chart(fig3)
