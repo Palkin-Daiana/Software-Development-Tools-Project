@@ -7,7 +7,7 @@ df = pd.read_csv('vehicles_us_clean.csv')
 df.info()
 
 
-st.header(':color[Find Your dream Car Today]')
+st.header(':red[Find Your dream Car Today]')
 st.image('https://www.automoblog.net/wp-content/uploads/2023/07/kids-dream-cars-ai-automoblog.net-1-10-1024x1024.png')
 
 
