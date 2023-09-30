@@ -19,12 +19,14 @@ price_def = (int(df.price.describe()['25%']), int(df.price.describe()['75%']))
 year = st.sidebar.slider('Choose Your Budget', int(df.price.min()), int(df.price.max()), (price_def))
 Antique = st.sidebar.checkbox('Antique cars only')
 
-
+column_names = {'price':'Price', 'model_year':'Model Year', 'model':'Model', 'condition':'Condition', 'cylinders':'Cylinders', 'fuel':'Fuel',
+       'odometer':'Odometer', 'transmission':'Transmission', 'type':'Type', 'paint_color':'Paint Color', 'is_4wd':'Is 4WD ',
+       'date_posted':'Date Posted', 'days_listed':'Days Listed'}
 if Antique:
     df_ant = df[df['model_year'] <= 1994]
     st.dataframe(df_ant[(df_ant['paint_color'] == color) & (df_ant['condition'] == condition)])
 else:
-    st.dataframe(df[(df['paint_color'] == color) & (df['condition'] == condition)])
+    st.dataframe(df[(df['paint_color'] == color) & (df['condition'] == condition)], column_config=column_names)
 
     ##.style.format(subset=['model_year'], formatter="{:.2f}")
 
