@@ -7,7 +7,7 @@ df = pd.read_csv('vehicles_us_clean.csv')
 df.info()
 
 
-st.header(':red[Find Your dream Car Today]')    # :color[] introduced 1.16.0, divider introduced 1.21.0
+st.header(':red[**Find Your dream Car Today**]')    # :color[] introduced 1.16.0, divider introduced 1.21.0
 st.image('https://www.automoblog.net/wp-content/uploads/2023/07/kids-dream-cars-ai-automoblog.net-1-10-1024x1024.png')
 
 
@@ -50,7 +50,7 @@ fig2.for_each_trace(lambda t: t.update(hovertemplate=t.hovertemplate.replace("co
 #fig3 = px.pie(data_frame=filtered_data, names=fig3_labels, values=fig3_values, title='A lot of GAZ fueled cars! We don\'t forget the DIESEL lovers', color_discrete_sequence=px.colors.sequential.Rainbow)
 
 
-st.header(':red[**Some Additional Info to Make Your Decision Easier**]')
+st.subheader(':red[**Some Additional Info to Make Your Decision Easier**]')
 st.write('**Number of Cars by Fuel Type**')
 count_fuel = filtered_data['fuel'].value_counts()
 cols = st.columns(len(count_fuel))
