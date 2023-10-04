@@ -34,7 +34,7 @@ else:
     filtered_data = filtered_data[filtered_data['condition'] == condition]
     filtered_data = filtered_data[filtered_data['price'].isin(actual_budget)]  
     
-st.dataframe(filtered_data)
+st.dataframe(filtered_data, column_config= column_names)
 
 fig1 = px.scatter(filtered_data, x='model_year', y='price', color='condition', title='Price by Model Year and Car Condition', 
                   labels={'price':'Price in $', 'condition':'Condition', 'model_year':'Model Year'}) 
