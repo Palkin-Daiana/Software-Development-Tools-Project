@@ -15,21 +15,26 @@ st.sidebar.write('''**Enter Your Preferences Below-**
                  You will see the table changes according to your preferences''')
 color =st.sidebar.selectbox('Choose Your Color', df.paint_color.unique(), index=1)
 condition = st.sidebar.radio("In What Condition?",df.condition.unique())
-price_def = (int(df.price.describe()['25%']), int(df.price.describe()['75%']))
-year = st.sidebar.slider('Choose Your Budget', int(df.price.min()), int(df.price.max()), (int(df.price.min()), int(df.price.max())))
+#price_def = (int(df.price.describe()['25%']), int(df.price.describe()['75%']))
+budget = st.sidebar.slider('Choose Your Budget', int(df.price.min()), int(df.price.max()), (int(df.price.min()), int(df.price.max())))
+actual_budget=list(range(budget[0],budget[1]+1))
 Antique = st.sidebar.checkbox('Antique cars only')
 
 column_names = {'price':'Price', 'model_year':'Model Year', 'model':'Model', 'condition':'Condition', 'cylinders':'Cylinders', 'fuel':'Fuel',
        'odometer':'Odometer', 'transmission':'Transmission', 'type':'Type', 'paint_color':'Paint Color', 'is_4wd':'Is 4WD ',
        'date_posted':'Date Posted', 'days_listed':'Days Listed'}
+
 if Antique:
-    df_ant = df[df['model_year'] <= 1994]
-    st.dataframe(df_ant[(df_ant['paint_color'] == color) & (df_ant['condition'] == condition)])
+    filtered_data = df[df['model_year'] <= 1994]
+    filtered_data = filtered_data[filtered_data['paint_color'] == color]
+    filtered_data = filtered_data[filtered_data['condition'] == condition]
+    filtered_data = filtered_data[filtered_data['price'].isin(actual_budget)]                      
 else:
-    st.dataframe(df[(df['paint_color'] == color) & (df['condition'] == condition)], column_config=column_names)
-
-    ##.style.format(subset=['model_year'], formatter="{:.2f}")
-
+    filtered_data = df[df['paint_color'] == color]
+    filtered_data = filtered_data[filtered_data['condition'] == condition]
+    filtered_data = filtered_data[filtered_data['price'].isin(actual_budget)]  
+    
+st.dataframe(filtered_data)
 
 fig1 = px.scatter(df, x='model_year', y='price', color='condition', title='Price by Model Year and Car Condition', 
                   labels={'price':'Price in $', 'condition':'Condition', 'model_year':'Model Year'}) 
