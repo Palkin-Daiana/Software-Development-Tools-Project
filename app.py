@@ -49,14 +49,16 @@ fig2.for_each_trace(lambda t: t.update(hovertemplate=t.hovertemplate.replace("co
 #fig3_values = filtered_data['fuel'].value_counts().values
 #fig3 = px.pie(data_frame=filtered_data, names=fig3_labels, values=fig3_values, title='A lot of GAZ fueled cars! We don\'t forget the DIESEL lovers', color_discrete_sequence=px.colors.sequential.Rainbow)
 
-count_fuel = filtered_data['fuel'].value_counts()
-cols = st.columns(len(count_fuel))
-counter = 0
-for i, v in count_fuel.items():
-    cols[counter].metric(label=i, value=v)
-    counter += 1
 
 with st.expander(':red[Some Additional Info to Make Your Decision Easier]'): 
+    st.text('Distribution of Car Fuel Type')
+    count_fuel = filtered_data['fuel'].value_counts()
+    cols = st.columns(len(count_fuel))
+    counter = 0
+    for i, v in count_fuel.items():
+        cols[counter].metric(label=i, value=v)
+        counter += 1
     st.plotly_chart(fig1)
     st.plotly_chart(fig2)
     #st.plotly_chart(fig3)
+
