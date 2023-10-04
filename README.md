@@ -7,6 +7,7 @@ This tool allows you to view and filter listings of vehicles.
 Additionally, you will find in this tool graphs of to help you find the most compatible car.  
 This app was build using Python 3.11.5.  
 packages: Streamlit 1.27.0, Pandas 2.1.1, Plotly.express 5.17.0.
+	(on Render packeges: streamlit==1.23.0, pandas==1.3.0, plotly==5.11.0, altair<5 )
 
 ## instructions for launching this app locally in your machine:
 1. Clone repository through Visual Studio Code (or any other IDE).
