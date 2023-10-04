@@ -31,8 +31,14 @@ else:
     ##.style.format(subset=['model_year'], formatter="{:.2f}")
 
 
-fig1 = px.scatter(df, x='model_year', y='price', color='condition', title='Price by Model Year and Car Condition')
-fig2 = px.histogram(df, x="condition", title='Soo many EXCELLENT cars!', color_discrete_sequence=['indianred']).update_xaxes(categoryorder='total descending')
+fig1 = px.scatter(df, x='model_year', y='price', color='condition', title='Price by Model Year and Car Condition', 
+                  labels={'price':'Price in $', 'condition':'Condition', 'model_year':'Model Year'}) 
+
+fig2 = px.histogram(df, x="condition", title='Distribution of Car Condition!', color_discrete_sequence=['indianred'], 
+                    labels={'condition':'Condition'}).update_xaxes(categoryorder='total descending')
+fig2.update_layout(yaxis_title_text = 'Number of Cars')
+fig2.for_each_trace(lambda t: t.update(hovertemplate=t.hovertemplate.replace("count", "Number of Cars")))
+
 fig3_labels = df['fuel'].value_counts().index
 fig3_values = df['fuel'].value_counts().values
 fig3 = px.pie(data_frame=df, names=fig3_labels, values=fig3_values, title='A lot of GAZ fueled cars! We don\'t forget the DIESEL lovers', color_discrete_sequence=px.colors.sequential.Rainbow)
