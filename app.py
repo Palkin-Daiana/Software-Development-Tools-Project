@@ -34,7 +34,7 @@ else:
 fig1 = px.scatter(df, x='model_year', y='price', color='condition', title='Price by Model Year and Car Condition', 
                   labels={'price':'Price in $', 'condition':'Condition', 'model_year':'Model Year'}) 
 
-fig2 = px.histogram(df, x="condition", title='Distribution of Car Condition!', color_discrete_sequence=['indianred'], 
+fig2 = px.histogram(df, x="condition", title='Distribution of Car Condition', color_discrete_sequence=['indianred'], 
                     labels={'condition':'Condition'}).update_xaxes(categoryorder='total descending')
 fig2.update_layout(yaxis_title_text = 'Number of Cars')
 fig2.for_each_trace(lambda t: t.update(hovertemplate=t.hovertemplate.replace("count", "Number of Cars")))
