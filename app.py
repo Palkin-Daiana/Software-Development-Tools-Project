@@ -51,7 +51,7 @@ fig2.for_each_trace(lambda t: t.update(hovertemplate=t.hovertemplate.replace("co
 
 
 with st.expander(':red[Some Additional Info to Make Your Decision Easier]'): 
-    st.text('Distribution of Car Fuel Type')
+    st.write('Distribution of Car Fuel Type')
     count_fuel = filtered_data['fuel'].value_counts()
     cols = st.columns(len(count_fuel))
     counter = 0
