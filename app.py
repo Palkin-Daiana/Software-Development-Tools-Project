@@ -52,12 +52,15 @@ fig2.for_each_trace(lambda t: t.update(hovertemplate=t.hovertemplate.replace("co
 
 st.subheader(':red[**Some Additional Info to Make Your Decision Easier**]')
 st.write('**Number of Cars by Fuel Type**')
-count_fuel = filtered_data['fuel'].value_counts()
-cols = st.columns(len(count_fuel))
-counter = 0
-for i, v in count_fuel.items():
-    cols[counter].metric(label=i, value=v)
-    counter += 1
+try:
+    count_fuel = filtered_data['fuel'].value_counts()
+    cols = st.columns(len(count_fuel))
+    counter = 0
+    for i, v in count_fuel.items():
+        cols[counter].metric(label=i, value=v)
+        counter += 1
+except:
+    st.write('**There Are No Cars fot these preferences, Please Try Somthing Else.**')
 st.plotly_chart(fig1)
 st.plotly_chart(fig2)
 #st.plotly_chart(fig3)
