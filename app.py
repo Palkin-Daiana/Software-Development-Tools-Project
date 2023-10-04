@@ -60,7 +60,7 @@ try:
         cols[counter].metric(label=i, value=v)
         counter += 1
 except:
-    st.write('**There Are No Cars for these Preferences =( , Please Try Somthing Else.**')
+    st.write('**There Are No Cars for these Preferences :disappointed: , Please Try Somthing Else.**')
 st.plotly_chart(fig1)
 st.plotly_chart(fig2)
 #st.plotly_chart(fig3)
